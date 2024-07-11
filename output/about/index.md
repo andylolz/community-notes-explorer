@@ -18,13 +18,7 @@ We also attempt to filter out notes for deleted tweets and non-English tweets.
 
 ### Filter by author group
 
-With thanks to [@leobenedictus](https://x.com/leobenedictus) for the suggestion, community notes can be filtered by ~~current UK MPs~~ **UK General Election candidates**.
-
-In order to do this, we need a list of the Twitter (X) handles of election candidates. This data is pulled daily from [Democracy Club candidates](https://candidates.democracyclub.org.uk/). It’s incomplete, but you can help improve it by finding and adding candidate Twitter (X) handles to their data.
-
-{% assign total_candidate_handles = site.data.ge2024-candidates | size %}
-
-At present, Democracy Club candidates has Twitter (X) handles of **{% include commify.html number=total_candidate_handles %} UK General Election candidates**.
+With thanks to [@leobenedictus](https://x.com/leobenedictus) for the suggestion, community notes can be filtered by current UK MPs.
 
 ---
 
