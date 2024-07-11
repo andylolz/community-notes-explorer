@@ -28,6 +28,7 @@ def load_notes(filepath: str = "output/data/notes.json") -> dict[str, dict[str, 
                 "tweet",
                 "tweet_id",
                 "user",
+                "user_id",
                 "tweet_created_at",
             ]
             if k in noted_tweet
@@ -52,6 +53,7 @@ def save_notes(
                     "tweet",
                     "tweet_id",
                     "user",
+                    "user_id",
                     "tweet_created_at",
                 ]
                 if k in note

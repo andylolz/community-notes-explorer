@@ -83,6 +83,7 @@ async def fetch_tweets() -> None:
         if tweet:
             note_update["lang"] = tweet.lang
             note_update["user"] = tweet.user.username
+            note_update["user_id"] = tweet.user.id
             note_update["tweet"] = tweet.rawContent
             note_update["tweet_created_at"] = tweet.date.isoformat()
         else:
