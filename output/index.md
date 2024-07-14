@@ -209,7 +209,7 @@ Proposed [Twitter (X) community notes](https://x.com/i/communitynotes/download-d
                 if (!rowData['user']) {
                   return false;
                 }
-                return mps.includes(rowData['user'].toLowerCase());
+                return mps.includes(rowData['user_id']);
               }
             }
           ]
