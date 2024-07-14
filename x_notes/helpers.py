@@ -51,10 +51,10 @@ def save_notes(
                     "dl",
                     "lang",
                     "tweet",
+                    "tweet_created_at",
                     "tweet_id",
                     "user",
                     "user_id",
-                    "tweet_created_at",
                 ]
                 if k in note
             }

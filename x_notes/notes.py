@@ -69,7 +69,6 @@ def get_notes(notes: dict[str, dict[str, Any]]) -> dict[str, dict[str, Any]]:
             {
                 "tweet_id": row["tweetId"],
                 "note_id": note_id,
-                # "note_author_id": row["noteAuthorParticipantId"],
                 "reasons": reasons,
                 "summary": urlize(row["summary"]),
                 "created_at": created_at,
@@ -77,7 +76,15 @@ def get_notes(notes: dict[str, dict[str, Any]]) -> dict[str, dict[str, Any]]:
         )
         if "dl" not in note and note["tweet_id"] in notes_by_tweet_id:
             tweet_note = notes_by_tweet_id[note["tweet_id"]]
-            for k in ["dl", "deleted", "lang", "user", "tweet"]:
+            for k in [
+                "dl",
+                "deleted",
+                "lang",
+                "tweet",
+                "tweet_created_at",
+                "user",
+                "user_id",
+            ]:
                 if k in tweet_note:
                     note[k] = tweet_note[k]
         notes[note_id] = note
