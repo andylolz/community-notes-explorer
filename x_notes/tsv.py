@@ -27,10 +27,11 @@ def get_data(date: date, fname: str, index: int = 0) -> Generator:
 
 
 def get_generator(fname: str, index: int = 0) -> Generator:
+    num_days_ago_to_try = 5
     today = date.today()
-    try:
-        return get_data(today, fname, index)
-    except Exception:
-        pass
-    yesterday = today - timedelta(days=1)
-    return get_data(yesterday, fname, index)
+    for n in range(num_days_ago_to_try + 1):
+        try:
+            n_days_ago = today - timedelta(days=n)
+            return get_data(n_days_ago, fname, index)
+        except Exception:
+            pass
