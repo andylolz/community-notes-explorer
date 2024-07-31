@@ -35,3 +35,4 @@ def get_generator(fname: str, index: int = 0) -> Generator:
             return get_data(n_days_ago, fname, index)
         except Exception:
             pass
+    raise Exception
