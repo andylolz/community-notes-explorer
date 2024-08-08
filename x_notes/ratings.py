@@ -2,7 +2,7 @@ from typing import Any
 
 from .exceptions import DataNotFoundException
 from .helpers import load_notes, save_notes
-from .tsv import get_generator
+from .tsv import get_todays_data
 
 helpfulness_score = {
     "HELPFUL": 2,
@@ -21,7 +21,7 @@ def add_ratings(notes: dict[str, dict[str, Any]]) -> None:
     index = 0
     while True:
         try:
-            gen = get_generator("noteRatings/ratings", index)
+            gen = get_todays_data("noteRatings/ratings", index=index)
         except DataNotFoundException:
             break
         for row in gen:

@@ -5,7 +5,7 @@ from urllib.parse import urlparse
 
 from .exceptions import DataNotFoundException
 from .helpers import to_isoformat
-from .tsv import get_generator
+from .tsv import get_todays_data
 
 url_re = re.compile(r"https?:\/\/[^\s]+")
 one_week_ago = (datetime.now(timezone.utc) - timedelta(days=7)).timestamp()
@@ -54,7 +54,7 @@ def get_notes(notes: dict[str, dict[str, Any]]) -> dict[str, dict[str, Any]]:
         if datetime.fromisoformat(v["created_at"]).timestamp() >= one_week_ago
     }
     try:
-        gen = get_generator("notes/notes")
+        gen = get_todays_data("notes/notes")
     except DataNotFoundException:
         return notes
 

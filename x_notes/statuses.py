@@ -2,7 +2,7 @@ from typing import Any
 
 from .exceptions import DataNotFoundException
 from .helpers import to_isoformat
-from .tsv import get_generator
+from .tsv import get_todays_data
 
 helpful = "CURRENTLY_RATED_HELPFUL"
 unhelpful = "CURRENTLY_RATED_NOT_HELPFUL"
@@ -10,7 +10,7 @@ unhelpful = "CURRENTLY_RATED_NOT_HELPFUL"
 
 def add_statuses(notes: dict[str, dict[str, Any]]) -> dict[str, dict[str, Any]]:
     try:
-        gen = get_generator("noteStatusHistory/noteStatusHistory")
+        gen = get_todays_data("noteStatusHistory/noteStatusHistory")
     except DataNotFoundException:
         return notes
 
