@@ -52,9 +52,9 @@ After fetching new proposed community notes, the text of the tweets that the not
 {% endif %}
 
 <div class="progress my-2" style="max-width: 500px;" role="progressbar">
-  <div class="progress-bar text-bg-{% if perc_fetched == 100 %}success{% elsif perc_fetched < 50 %}danger{% else %}warning{% endif %}" style="width: {{ perc_fetched }}%">{{ perc_fetched }}% ({% include commify.html number=site.data.meta.total_fetched %} / {% include commify.html number=site.data.meta.total_tweets %})</div>
+  <div class="progress-bar progress-bar-striped bg-{% if perc_fetched == 100 %}success{% elsif perc_fetched < 50 %}danger{% else %}warning{% endif %}" style="width: {{ perc_fetched }}%"></div>
 </div>
-{{ perc_fetched }}% of tweets are currently searchable.
+{{ perc_fetched }}% of tweets ({% include commify.html number=site.data.meta.total_fetched %} / {% include commify.html number=site.data.meta.total_tweets %}) are currently searchable.
 
 <script>
   const dts = document.getElementsByClassName('dt');
