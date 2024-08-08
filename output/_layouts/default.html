@@ -42,9 +42,14 @@
     </header>
 
     {% if site.data.meta.total_tweets == 0 %}
-    <div class="alert alert-danger" role="alert">
-      <strong>Something’s gone wrong.</strong> There are currently no notes to show. We’re investigating.
-    </div>
+      <div class="alert alert-danger" role="alert">
+        <strong>Something’s gone wrong.</strong> There are currently no notes to show. We’re investigating.
+      </div>
+    {% elsif site.data.meta.total_fetched < site.data.meta.total_tweets %}
+      {% assign perc_fetched = site.data.meta.total_fetched | times: 100 | divided_by: site.data.meta.total_tweets %}
+      <div class="alert alert-warning" role="alert">
+        <strong>Warning: Only {{ perc_fetched }}% of tweets are currently indexed.</strong> Unindexed tweets are not included in search or filtering.
+      </div>
     {% endif %}
 
     <main>
