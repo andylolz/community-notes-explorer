@@ -6,7 +6,7 @@ Community note data is fetched regularly [from Twitter (X)](https://x.com/i/comm
 
 This data is always a couple of days old
 
-{%- if site.data.meta.total_tweets -%}
+{%- if site.data.meta.total_tweets > 0 -%}
 (**most recent data is from <time class="dt" datetime="{{ site.data.meta.most_recent }}" title="{{ site.data.meta.most_recent | date_to_rfc822 }}">{{ site.data.meta.most_recent }}</time>, scraped <time class="dt" datetime="{{ site.data.meta.scraped_at }}" title="{{ site.data.meta.scraped_at | date_to_rfc822 }}">{{ site.data.meta.scraped_at }}</time>**)
 {%- endif -%}
 .
@@ -50,7 +50,7 @@ When Twitter (X) can’t determine the language of a tweet, it uses one of sever
 
 After fetching new proposed community notes, the text of the tweets that the notes reference is not immediately searchable. In order to make it searchable, we need to fetch these tweets – a process that can take several hours. You can see the current status below.
 
-{% if site.data.meta.total_tweets %}
+{% if site.data.meta.total_tweets > 0 %}
   {% assign perc_fetched = site.data.meta.total_fetched | times: 100 | divided_by: site.data.meta.total_tweets %}
 {% else %}
   {% assign perc_fetched = 0 %}
