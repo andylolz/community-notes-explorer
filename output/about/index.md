@@ -4,7 +4,12 @@ title: How it works
 
 Community note data is fetched regularly [from Twitter (X)](https://x.com/i/communitynotes/download-data).
 
-This data is always a couple of days old (**most recent data is from <time class="dt" datetime="{{ site.data.meta.most_recent }}" title="{{ site.data.meta.most_recent | date_to_rfc822 }}">{{ site.data.meta.most_recent }}</time>, scraped <time class="dt" datetime="{{ site.data.meta.scraped_at }}" title="{{ site.data.meta.scraped_at | date_to_rfc822 }}">{{ site.data.meta.scraped_at }}</time>**).
+This data is always a couple of days old
+
+{%- if site.data.meta.total_tweets -%}
+(**most recent data is from <time class="dt" datetime="{{ site.data.meta.most_recent }}" title="{{ site.data.meta.most_recent | date_to_rfc822 }}">{{ site.data.meta.most_recent }}</time>, scraped <time class="dt" datetime="{{ site.data.meta.scraped_at }}" title="{{ site.data.meta.scraped_at | date_to_rfc822 }}">{{ site.data.meta.scraped_at }}</time>**)
+{%- endif -%}
+.
 
 Notes are excluded if they meet any of the following criteria:
 

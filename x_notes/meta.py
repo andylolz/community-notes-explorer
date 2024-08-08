@@ -31,7 +31,7 @@ def update_meta(update: dict[str, Any]) -> None:
 def update_meta_from_notes(notes: dict[str, dict[str, Any]]) -> None:
     update = {
         "scraped_at": datetime.now(timezone.utc).isoformat(),
-        "most_recent": list(notes.values())[0]["created_at"],
+        "most_recent": list(notes.values())[0]["created_at"] if notes else None,
         "total_tweets": len({note["tweet_id"] for note in notes.values()}),
         "total_fetched": len(
             {note["tweet_id"] for note in notes.values() if "dl" in note}
