@@ -33,10 +33,11 @@ bundle install
 cp .env.example .env
 ```
 
-If you just need some notes data:
+If you just need some notes data and metadata:
 
 ```shell
-curl -o output/data/notes.json https://andylolz.github.io/x-community-notes/data/notes.json
+curl -L -o output/data/notes.json https://github.com/andylolz/x-community-notes/raw/gh-pages/data/notes.json
+curl -L -o output/_data/meta.json https://github.com/andylolz/x-community-notes/raw/gh-pages/_data/meta.json
 ```
 
 Then to run:
@@ -56,5 +57,4 @@ poetry run python -m x_notes.fetch_candidates
 
 # Optional: fetch tweets
 poetry run python -m x_notes.fetch_tweets
-
 ```
