@@ -1,5 +1,6 @@
 from typing import Any
 
+from .exceptions import DataNotFoundException
 from .helpers import to_isoformat
 from .tsv import get_generator
 
@@ -8,7 +9,12 @@ unhelpful = "CURRENTLY_RATED_NOT_HELPFUL"
 
 
 def add_statuses(notes: dict[str, dict[str, Any]]) -> dict[str, dict[str, Any]]:
-    for row in get_generator("noteStatusHistory/noteStatusHistory"):
+    try:
+        gen = get_generator("noteStatusHistory/noteStatusHistory")
+    except DataNotFoundException:
+        return notes
+
+    for row in gen:
         note_id = row["noteId"]
         if note_id not in notes:
             continue

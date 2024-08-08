@@ -1,5 +1,6 @@
 from typing import Any
 
+from .exceptions import DataNotFoundException
 from .helpers import load_notes, save_notes
 from .tsv import get_generator
 
@@ -21,7 +22,7 @@ def add_ratings(notes: dict[str, dict[str, Any]]) -> None:
     while True:
         try:
             gen = get_generator("noteRatings/ratings", index)
-        except Exception:
+        except DataNotFoundException:
             break
         for row in gen:
             if row["noteId"] in notes:

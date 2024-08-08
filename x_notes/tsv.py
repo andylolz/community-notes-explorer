@@ -5,6 +5,8 @@ from typing import Generator
 
 import requests
 
+from .exceptions import DataNotFoundException
+
 
 def get_data(date: date, fname: str, index: int = 0) -> Generator:
     url_tmpl = (
@@ -35,4 +37,4 @@ def get_generator(fname: str, index: int = 0) -> Generator:
             return get_data(n_days_ago, fname, index)
         except Exception:
             pass
-    raise Exception
+    raise DataNotFoundException
