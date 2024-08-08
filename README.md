@@ -52,9 +52,6 @@ If you want to download the notes yourself with python:
 # Fetch notes
 poetry run python -m x_notes
 
-# Fetch a big list of GE2024 candidate twitter handles
-poetry run python -m x_notes.fetch_candidates
-
 # Optional: fetch tweets
 poetry run python -m x_notes.fetch_tweets
 ```
