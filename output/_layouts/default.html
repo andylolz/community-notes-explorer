@@ -41,6 +41,12 @@
       </ul>
     </header>
 
+    {% if site.data.meta.total_tweets == 0 %}
+    <div class="alert alert-danger" role="alert">
+      <strong>Bad news.</strong> There are currently no notes to show. We’re investigating.
+    </div>
+    {% endif %}
+
     <main>
       <h1>{{ page.title }}</h1>
 
