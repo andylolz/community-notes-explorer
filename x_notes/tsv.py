@@ -1,5 +1,5 @@
 import csv
-from datetime import date, timedelta
+import datetime
 from io import StringIO
 from typing import Generator
 
@@ -8,7 +8,7 @@ import requests
 from .exceptions import DataNotFoundException
 
 
-def get_generator(date: date, fname: str, index: int = 0) -> Generator:
+def get_generator(date: datetime.date, fname: str, index: int = 0) -> Generator:
     url_tmpl = (
         f"https://ton.twimg.com/birdwatch-public-data/{{date}}/{fname}-{index:05d}.tsv"
     )
@@ -30,10 +30,10 @@ def get_generator(date: date, fname: str, index: int = 0) -> Generator:
 
 def get_todays_data(fname: str, index: int = 0) -> Generator:
     num_days_ago_to_try = 5
-    today = date.today()
+    today = datetime.date.today()
     for n in range(num_days_ago_to_try + 1):
         try:
-            n_days_ago = today - timedelta(days=n)
+            n_days_ago = today - datetime.timedelta(days=n)
             return get_generator(n_days_ago, fname, index)
         except Exception:
             pass
