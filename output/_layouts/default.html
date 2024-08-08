@@ -51,7 +51,7 @@
     {% elsif site.data.meta.total_fetched < site.data.meta.total_tweets %}
       {% assign perc_fetched = site.data.meta.total_fetched | times: 100 | divided_by: site.data.meta.total_tweets %}
       <div class="alert alert-warning" role="alert">
-        <strong>Warning: Only {{ perc_fetched }}% of tweets are currently indexed.</strong> Unindexed tweets are not included in search or filtering. <em><a class="alert-link" href="{{ '/about/#tweet-indexing-status' | relative_url }}">More…</a></em>
+        <strong>Only {{ perc_fetched }}% of tweets are currently indexed.</strong> Unindexed tweets are not included in search or filtering. <em><a class="alert-link" href="{{ '/about/#tweet-indexing-status' | relative_url }}">More…</a></em>
       </div>
     {% endif %}
 
