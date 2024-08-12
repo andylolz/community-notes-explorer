@@ -11,7 +11,7 @@ def to_isoformat(ms_since_epoch: str) -> str:
 
 
 def load_notes(filepath: str = "output/data/notes.json") -> dict[str, dict[str, Any]]:
-    notes = {}
+    notes: dict[str, dict[str, Any]] = {}
     try:
         with open(filepath) as fh:
             noted_tweets = json.load(fh)
