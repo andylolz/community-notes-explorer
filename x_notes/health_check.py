@@ -1,5 +1,5 @@
 import json
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from io import BytesIO
 
 import requests
@@ -12,7 +12,7 @@ def health_check() -> None:
         "https://github.com/andylolz/x-community-notes/raw/gh-pages/_data/meta.json"
     )
     meta = json.load(BytesIO(r.content))
-    delta = datetime.now(timezone.utc) - datetime.fromisoformat(meta["most_recent"])
+    delta = datetime.now(UTC) - datetime.fromisoformat(meta["most_recent"])
 
     if delta > timedelta(days=MAX_AGE_IN_DAYS):
         raise Exception(f"Most recent tweet is more than {MAX_AGE_IN_DAYS} days old.")

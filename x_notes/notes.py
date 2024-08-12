@@ -1,5 +1,5 @@
 import re
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from typing import Any
 from urllib.parse import urlparse
 
@@ -8,7 +8,7 @@ from .helpers import to_isoformat
 from .tsv import get_todays_data
 
 url_re = re.compile(r"https?:\/\/[^\s]+")
-one_week_ago = (datetime.now(timezone.utc) - timedelta(days=7)).timestamp()
+one_week_ago = (datetime.now(UTC) - timedelta(days=7)).timestamp()
 
 
 def urlize(inp: str) -> str:

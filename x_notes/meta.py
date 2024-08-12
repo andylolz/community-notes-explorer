@@ -1,5 +1,5 @@
 import json
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any
 
 
@@ -12,7 +12,7 @@ def account_locked_until() -> str | None:
     meta = load_meta()
     if not meta.get("locked_until"):
         return None
-    if datetime.fromisoformat(meta["locked_until"]) < datetime.now(timezone.utc):
+    if datetime.fromisoformat(meta["locked_until"]) < datetime.now(UTC):
         return None
     return meta["locked_until"]
 
@@ -30,7 +30,7 @@ def update_meta(update: dict[str, Any]) -> None:
 
 def update_meta_from_notes(notes: dict[str, dict[str, Any]]) -> None:
     update = {
-        "scraped_at": datetime.now(timezone.utc).isoformat(),
+        "scraped_at": datetime.now(UTC).isoformat(),
         "total_tweets": len({note["tweet_id"] for note in notes.values()}),
         "total_fetched": len(
             {note["tweet_id"] for note in notes.values() if "dl" in note}

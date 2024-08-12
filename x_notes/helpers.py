@@ -1,13 +1,13 @@
 import json
 from collections import defaultdict
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any
 
 from loguru import logger
 
 
 def to_isoformat(ms_since_epoch: str) -> str:
-    return datetime.fromtimestamp(int(ms_since_epoch[:-3]), timezone.utc).isoformat()
+    return datetime.fromtimestamp(int(ms_since_epoch[:-3]), UTC).isoformat()
 
 
 def load_notes(filepath: str = "output/data/notes.json") -> dict[str, dict[str, Any]]:
