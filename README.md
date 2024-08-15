@@ -1,5 +1,7 @@
 # Twitter (X) community notes
 
+[![Health check](https://github.com/andylolz/x-community-notes/actions/workflows/health_check.yml/badge.svg)](https://github.com/andylolz/x-community-notes/actions/workflows/health_check.yml)
+
 Proposed [Twitter (X) community notes](https://x.com/i/communitynotes/download-data) from the last week, updated regularly. _[More…](#how-it-works)_
 
 https://andylolz.github.io/x-community-notes/
