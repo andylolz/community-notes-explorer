@@ -44,7 +44,7 @@ jobs:
         run: poetry run python -m x_notes
 
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.6.4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: output
           single-commit: true
