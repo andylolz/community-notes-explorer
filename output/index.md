@@ -1,5 +1,5 @@
 ---
-title: Twitter (X) community notes
+title: Community notes explorer
 ---
 
 Proposed [Twitter (X) community notes](https://x.com/i/communitynotes/download-data) from the last week, updated regularly. _[More…]({{ '/about/' | relative_url }})_

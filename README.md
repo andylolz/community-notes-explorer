@@ -1,4 +1,4 @@
-# Twitter (X) community notes
+# Community notes explorer
 
 [![Health check](https://github.com/andylolz/x-community-notes/actions/workflows/health_check.yml/badge.svg)](https://github.com/andylolz/x-community-notes/actions/workflows/health_check.yml)
 
