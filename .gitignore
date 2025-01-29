@@ -171,3 +171,5 @@ output/_data/*.json
 
 # sqlite
 *.db
+
+.python-version
