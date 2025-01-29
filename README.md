@@ -1,10 +1,10 @@
 # Community notes explorer
 
-[![Health check](https://github.com/andylolz/x-community-notes/actions/workflows/health_check.yml/badge.svg)](https://github.com/andylolz/x-community-notes/actions/workflows/health_check.yml)
+[![Health check](https://github.com/andylolz/community-notes-explorer/actions/workflows/health_check.yml/badge.svg)](https://github.com/andylolz/community-notes-explorer/actions/workflows/health_check.yml)
 
 Proposed [Twitter (X) community notes](https://x.com/i/communitynotes/download-data) from the last week, updated regularly. _[More…](#how-it-works)_
 
-https://andylolz.github.io/x-community-notes/
+https://communitynotesexplorer.com
 
 ## How it works
 
@@ -38,8 +38,8 @@ cp .env.example .env
 If you just need some notes data and metadata:
 
 ```shell
-curl -L -o output/data/notes.json https://github.com/andylolz/x-community-notes/raw/gh-pages/data/notes.json
-curl -L -o output/_data/meta.json https://github.com/andylolz/x-community-notes/raw/gh-pages/_data/meta.json
+curl -L -o output/data/notes.json https://github.com/andylolz/community-notes-explorer/raw/gh-pages/data/notes.json
+curl -L -o output/_data/meta.json https://github.com/andylolz/community-notes-explorer/raw/gh-pages/_data/meta.json
 ```
 
 Then to run:
