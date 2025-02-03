@@ -9,13 +9,13 @@ Proposed [Twitter (X) community notes](https://x.com/i/communitynotes/download-d
     <thead>
       <tr>
         <th>Created</th>
-        <th>Tweet</th>
+        <th>Post</th>
         <th>Note(s)</th>
         <th>Reason for note</th>
-        <th>Tweet language</th>
-        <th>Tweet status</th>
-        <th>Tweet author</th>
-        <th>Tweet content</th>
+        <th>Post language</th>
+        <th>Post status</th>
+        <th>Post author</th>
+        <th>Post content</th>
         <th>Max score</th>
       </tr>
     </thead>
