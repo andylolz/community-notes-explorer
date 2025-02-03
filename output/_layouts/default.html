@@ -52,7 +52,7 @@
       {% assign perc_unfetched = site.data.meta.total_fetched | times: -100 | divided_by: site.data.meta.total_tweets | plus:100 %}
       {% if perc_unfetched > 0 %}
       <div class="alert alert-warning" role="alert">
-        <strong>Tweets are currently being indexed.</strong> The {{ perc_unfetched }}% of unindexed tweets will not be included in search or filtering. <em><a class="alert-link" href="{{ '/about/#tweet-indexing-status' | relative_url }}">More…</a></em>
+        <strong>Posts are currently being indexed.</strong> The {{ perc_unfetched }}% of unindexed posts will not be included in search or filtering. <em><a class="alert-link" href="{{ '/about/#post-indexing-status' | relative_url }}">More…</a></em>
       </div>
       {% endif %}
     {% endif %}
