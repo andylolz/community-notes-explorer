@@ -50,7 +50,7 @@ bundle exec jekyll s -s output
 ```
 
 If you want to download the notes yourself with python:
-```
+```shell
 # Fetch notes
 poetry run python -m x_notes
 
