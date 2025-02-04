@@ -46,7 +46,7 @@ Then to run:
 
 ```shell
 # Start the development server
-jekyll s -s output
+bundle exec jekyll s -s output
 ```
 
 If you want to download the notes yourself with python:
