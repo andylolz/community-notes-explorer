@@ -1,4 +1,3 @@
-import time
 from random import randint
 from typing import Any
 
@@ -29,7 +28,6 @@ def fetch_tweets() -> None:
             break
         note_id = note["note_id"]
         try:
-            time.sleep(0.5)
             tweet = requests.get(
                 "https://cdn.syndication.twimg.com/tweet-result?id={tweet_id}&token={random_token}".format(
                     tweet_id=int(note["tweet_id"]),
