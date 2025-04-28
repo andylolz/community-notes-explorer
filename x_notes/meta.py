@@ -8,15 +8,6 @@ def load_meta() -> dict[str, Any]:
         return json.load(fh)
 
 
-def account_locked_until() -> str | None:
-    meta = load_meta()
-    if not meta.get("locked_until"):
-        return None
-    if datetime.fromisoformat(meta["locked_until"]) < datetime.now(UTC):
-        return None
-    return meta["locked_until"]
-
-
 def save_meta(meta: dict[str, Any]) -> None:
     with open("output/_data/meta.json", "w") as fh:
         json.dump(meta, fh)
