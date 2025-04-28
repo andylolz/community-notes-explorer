@@ -66,3 +66,7 @@ def fetch_tweets() -> None:
         raise Exception("Failed to fetch any tweets")
 
     save_notes(notes)
+
+
+if __name__ == "__main__":
+    fetch_tweets()

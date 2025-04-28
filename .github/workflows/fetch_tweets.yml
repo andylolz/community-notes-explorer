@@ -43,7 +43,7 @@ jobs:
         run: cp -r previous/* output
 
       - name: Fetch tweets
-        run: poetry run python -m x_notes.fetch_tweets
+        run: poetry run python -m x_notes.tweets
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
