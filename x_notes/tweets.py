@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 from random import randint
 from typing import Any
 
@@ -21,7 +22,11 @@ def fetch_tweets() -> None:
     tweets_with_multi_notes = get_tweets_with_multi_notes(notes)
 
     total_fetched = 0
+    start_time = datetime.now()
     while True:
+        if datetime.now() - start_time > timedelta(minutes=20):
+            # 20 minutes is plenty. Give up for now
+            break
         note = get_next_unfetched_note(notes)
         if not note:
             logger.info("No more tweets to fetch")
