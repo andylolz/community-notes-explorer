@@ -40,6 +40,10 @@ def fetch_tweets() -> None:
                 )
             ).json()
         except Exception:
+            print("Problem fetching tweet with ID " + note["tweet_id"])
+            # skip this one for now
+            note_key = next(iter(notes))
+            notes.pop(note_key)
             continue
         note_update = {
             "dl": 1,
