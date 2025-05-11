@@ -32,6 +32,7 @@ def fetch_tweets() -> None:
             logger.info("No more tweets to fetch")
             break
         note_id = note["note_id"]
+        note_update = {}
         try:
             tweet = requests.get(
                 "https://cdn.syndication.twimg.com/tweet-result?id={tweet_id}&token={random_token}".format(
@@ -41,24 +42,22 @@ def fetch_tweets() -> None:
             ).json()
         except Exception:
             print("Problem fetching tweet with ID " + note["tweet_id"])
-            # skip this one for now
-            note_key = next(iter(notes))
-            notes.pop(note_key)
-            continue
-        note_update = {
-            "dl": 1,
-        }
-        total_fetched += 1
-        if not tweet.get("tombstone", False):
-            note_update["lang"] = tweet["lang"]
-            note_update["user"] = tweet["user"]["screen_name"]
-            note_update["user_id"] = tweet["user"]["id_str"]
-            note_update["tweet"] = tweet["text"]
-            note_update["tweet_created_at"] = tweet["created_at"]
         else:
-            note_update["deleted"] = 1
-        for update_note_id in tweets_with_multi_notes.get(note["tweet_id"], [note_id]):
-            notes[update_note_id] = {**notes[update_note_id], **note_update}
+            total_fetched += 1
+            if not tweet.get("tombstone", False):
+                note_update["lang"] = tweet["lang"]
+                note_update["user"] = tweet["user"]["screen_name"]
+                note_update["user_id"] = tweet["user"]["id_str"]
+                note_update["tweet"] = tweet["text"]
+                note_update["tweet_created_at"] = tweet["created_at"]
+            else:
+                note_update["deleted"] = 1
+        finally:
+            note_update["dl"] = 1
+            for update_note_id in tweets_with_multi_notes.get(
+                note["tweet_id"], [note_id]
+            ):
+                notes[update_note_id] = {**notes[update_note_id], **note_update}
 
     update_meta(
         {
