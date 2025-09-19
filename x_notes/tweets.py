@@ -45,11 +45,15 @@ def fetch_tweets() -> None:
         else:
             total_fetched += 1
             if not tweet.get("tombstone", False):
-                note_update["lang"] = tweet["lang"]
-                note_update["user"] = tweet["user"]["screen_name"]
-                note_update["user_id"] = tweet["user"]["id_str"]
-                note_update["tweet"] = tweet["text"]
-                note_update["tweet_created_at"] = tweet["created_at"]
+                try:
+                    note_update["lang"] = tweet["lang"]
+                    note_update["user"] = tweet["user"]["screen_name"]
+                    note_update["user_id"] = tweet["user"]["id_str"]
+                    note_update["tweet"] = tweet["text"]
+                    note_update["tweet_created_at"] = tweet["created_at"]
+                except Exception:
+                    print("Problem updating note with ID " + note["tweet_id"])
+                    raise
             else:
                 note_update["deleted"] = 1
         finally:
