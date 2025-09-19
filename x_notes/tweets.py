@@ -44,7 +44,7 @@ def fetch_tweets() -> None:
             print("Problem fetching tweet with ID " + note["tweet_id"])
         else:
             total_fetched += 1
-            if not tweet.get("tombstone", False):
+            if "tombstone" not in tweet:
                 try:
                     note_update["lang"] = tweet["lang"]
                     note_update["user"] = tweet["user"]["screen_name"]
