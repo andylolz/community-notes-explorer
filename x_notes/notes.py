@@ -53,45 +53,49 @@ def get_notes(notes: dict[str, dict[str, Any]]) -> dict[str, dict[str, Any]]:
         for k, v in notes.items()
         if datetime.fromisoformat(v["created_at"]).timestamp() >= one_week_ago
     }
-    try:
-        gen = get_todays_data("notes/notes")
-    except DataNotFoundException:
-        return notes
 
-    for row in gen:
-        note_id = row["noteId"]
-        created_at = to_isoformat(row["createdAtMillis"])
-        if float(row["createdAtMillis"]) / 1000 < one_week_ago:
-            # ignore old notes
-            continue
-        if row["classification"] == "NOT_MISLEADING":
-            # ignore "not misleading" notes
-            if note_id in notes:
-                del notes[note_id]
-            continue
-        reasons = [v for k, v in reasons_lookup.items() if bool(int(row[k]))]
-        note = notes.get(note_id, {})
-        note.update(
-            {
-                "tweet_id": row["tweetId"],
-                "note_id": note_id,
-                "reasons": reasons,
-                "summary": urlize(row["summary"]),
-                "created_at": created_at,
-            }
-        )
-        if "dl" not in note and note["tweet_id"] in notes_by_tweet_id:
-            tweet_note = notes_by_tweet_id[note["tweet_id"]]
-            for k in [
-                "dl",
-                "deleted",
-                "lang",
-                "tweet",
-                "tweet_created_at",
-                "user",
-                "user_id",
-            ]:
-                if k in tweet_note:
-                    note[k] = tweet_note[k]
-        notes[note_id] = note
+    index = 0
+    while True:
+        try:
+            gen = get_todays_data("notes/notes", index=index)
+        except DataNotFoundException:
+            break
+        for row in gen:
+            note_id = row["noteId"]
+            created_at = to_isoformat(row["createdAtMillis"])
+            if float(row["createdAtMillis"]) / 1000 < one_week_ago:
+                # ignore old notes
+                continue
+            if row["classification"] == "NOT_MISLEADING":
+                # ignore "not misleading" notes
+                if note_id in notes:
+                    del notes[note_id]
+                continue
+            reasons = [v for k, v in reasons_lookup.items() if bool(int(row[k]))]
+            note = notes.get(note_id, {})
+            note.update(
+                {
+                    "tweet_id": row["tweetId"],
+                    "note_id": note_id,
+                    "reasons": reasons,
+                    "summary": urlize(row["summary"]),
+                    "created_at": created_at,
+                }
+            )
+            if "dl" not in note and note["tweet_id"] in notes_by_tweet_id:
+                tweet_note = notes_by_tweet_id[note["tweet_id"]]
+                for k in [
+                    "dl",
+                    "deleted",
+                    "lang",
+                    "tweet",
+                    "tweet_created_at",
+                    "user",
+                    "user_id",
+                ]:
+                    if k in tweet_note:
+                        note[k] = tweet_note[k]
+            notes[note_id] = note
+        index += 1
+
     return notes
